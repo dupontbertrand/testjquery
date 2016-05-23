@@ -1,6 +1,6 @@
 class RegistrationsController < ApplicationController
   before_action :set_registration, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, only: [:show, :edit, :update, :destroy]
 
   # GET /registrations
   # GET /registrations.json
@@ -29,7 +29,7 @@ class RegistrationsController < ApplicationController
 
     respond_to do |format|
       if @registration.save
-        format.html { redirect_to :root, notice: 'Vous avez bien été enregistré.' }
+        format.html { redirect_to :root, notice: 'Vous avez bien été enregistré, bienvenue :)' }
         format.json { render :root, status: :created, location: @static_pages }
       else
         format.html { render :new }
